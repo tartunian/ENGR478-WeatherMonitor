@@ -1,0 +1,107 @@
+Dependencies for Project 'WeatherMonitor', Target 'Target 1': (DO NOT MODIFY !)
+CompilerVersion: 6150000::V6.15::ARMCLANG
+F (.\i2clib.c)(0x60A177E0)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I C:/ti/TivaWare_C_Series-2.1.4.178-IC:/Users/tartunian/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="533" -DTM4C123GH6PM -Drvmdk -DPART_TM4c123GH6PM -DPART_TM4C123GH6PM-o ./objects/i2clib.o -MD)
+I (i2clib.h)(0x60A1831A)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5F37B1A8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5F37B1AC)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x5F37B192)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\inc\hw_i2c.h)(0x601A13B5)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\inc\hw_memmap.h)(0x601A13B5)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\i2c.h)(0x601A13AD)
+F (.\i2clib.h)(0x60A1831A)()
+F (.\main.c)(0x60A183F9)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I C:/ti/TivaWare_C_Series-2.1.4.178-IC:/Users/tartunian/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="533" -DTM4C123GH6PM -Drvmdk -DPART_TM4c123GH6PM -DPART_TM4C123GH6PM-o ./objects/main.o -MD)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5F37B1A8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5F37B1AC)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h)(0x5F37B1AE)
+I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x5F37B1A4)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5F37B1B4)
+I (i2clib.h)(0x60A1831A)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x5F37B192)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\inc\hw_i2c.h)(0x601A13B5)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\inc\hw_memmap.h)(0x601A13B5)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\i2c.h)(0x601A13AD)
+I (main.h)(0x60512DC0)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\inc\hw_types.h)(0x601A13B5)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\inc\hw_gpio.h)(0x601A13B5)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\sysctl.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\pin_map.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\rom_map.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\timer.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\gpio.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\interrupt.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\inc\tm4c123gh6pm.h)(0x60489EBB)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\uart.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\utils\uartstdio.h)(0x601A13BF)
+I (libs\ssd1306\ssd1306.h)(0x60A177BB)
+I (C:\Keil_v5\ARM\ARMCLANG\include\assert.h)(0x5F37B196)
+I (libs\ssd1306\oled_font.h)(0x601F7FE3)
+I (libs\ssd1306\ssd1306_info.h)(0x605922D0)
+I (libs\ssd1306\bit_manipulation.h)(0x60203F7C)
+I (libs\ssd1306\ssd1306_utils.h)(0x605922C6)
+I (libs\ssd1306\oled_font_source_pro.h)(0x601F7FE3)
+F (.\main.h)(0x60512DC0)()
+F (.\startup_rvmdk.S)(0x60A17DC6)(--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -masm=auto -c-gdwarf-3 -D__EVAL-IC:/Users/tartunian/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION=533 -DTM4C123GH6PM-o ./objects/startup_rvmdk.o)
+F (.\libs\ssd1306\bit_manipulation.h)(0x60203F7C)()
+F (.\libs\ssd1306\oled_font.h)(0x601F7FE3)()
+F (.\libs\ssd1306\oled_font_source_pro.c)(0x60592034)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I C:/ti/TivaWare_C_Series-2.1.4.178-IC:/Users/tartunian/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="533" -DTM4C123GH6PM -Drvmdk -DPART_TM4c123GH6PM -DPART_TM4C123GH6PM-o ./objects/oled_font_source_pro.o -MD)
+I (libs\ssd1306\oled_font_source_pro.h)(0x601F7FE3)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5F37B1A8)
+I (libs\ssd1306\oled_font.h)(0x601F7FE3)
+F (.\libs\ssd1306\oled_font_source_pro.h)(0x601F7FE3)()
+F (.\libs\ssd1306\ssd1306.c)(0x60A17AA4)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I C:/ti/TivaWare_C_Series-2.1.4.178-IC:/Users/tartunian/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="533" -DTM4C123GH6PM -Drvmdk -DPART_TM4c123GH6PM -DPART_TM4C123GH6PM-o ./objects/ssd1306.o -MD)
+I (libs\ssd1306\ssd1306.h)(0x60A177BB)
+I (C:\Keil_v5\ARM\ARMCLANG\include\assert.h)(0x5F37B196)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5F37B1AC)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5F37B1A8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5F37B1B4)
+I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x5F37B1A4)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\inc\hw_i2c.h)(0x601A13B5)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\inc\hw_memmap.h)(0x601A13B5)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\inc\hw_types.h)(0x601A13B5)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\gpio.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\i2c.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\interrupt.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\pin_map.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\sysctl.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\uart.h)(0x601A13AD)
+I (libs\ssd1306\oled_font.h)(0x601F7FE3)
+I (libs\ssd1306\ssd1306_info.h)(0x605922D0)
+I (libs\ssd1306\bit_manipulation.h)(0x60203F7C)
+I (libs\ssd1306\ssd1306_utils.h)(0x605922C6)
+F (.\libs\ssd1306\ssd1306.h)(0x60A177BB)()
+F (.\libs\ssd1306\ssd1306_info.h)(0x605922D0)()
+F (.\libs\ssd1306\ssd1306_utils.c)(0x60591FE1)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I C:/ti/TivaWare_C_Series-2.1.4.178-IC:/Users/tartunian/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="533" -DTM4C123GH6PM -Drvmdk -DPART_TM4c123GH6PM -DPART_TM4C123GH6PM-o ./objects/ssd1306_utils.o -MD)
+I (libs\ssd1306\ssd1306_utils.h)(0x605922C6)
+I (C:\Keil_v5\ARM\ARMCLANG\include\assert.h)(0x5F37B196)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5F37B1AC)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5F37B1A8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5F37B1B4)
+I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x5F37B1A4)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\inc\hw_i2c.h)(0x601A13B5)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\inc\hw_memmap.h)(0x601A13B5)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\inc\hw_types.h)(0x601A13B5)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\gpio.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\i2c.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\interrupt.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\pin_map.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\sysctl.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\uart.h)(0x601A13AD)
+I (libs\ssd1306\ssd1306_info.h)(0x605922D0)
+I (libs\ssd1306\bit_manipulation.h)(0x60203F7C)
+F (.\libs\ssd1306\ssd1306_utils.h)(0x605922C6)()
+F (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\rvmdk\driverlib.lib)(0x601A13AD)()
+F (C:\ti\TivaWare_C_Series-2.1.4.178\utils\uartstdio.c)(0x601A13BF)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I C:/ti/TivaWare_C_Series-2.1.4.178-IC:/Users/tartunian/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device/Include/TM4C123-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="533" -DTM4C123GH6PM -Drvmdk -DPART_TM4c123GH6PM -DPART_TM4C123GH6PM-o ./objects/uartstdio.o -MD)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5F37B1AC)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5F37B1A8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x5F37B192)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\inc\hw_ints.h)(0x601A13B5)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\inc\hw_memmap.h)(0x601A13B5)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\inc\hw_types.h)(0x601A13B5)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\inc\hw_uart.h)(0x601A13B5)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\debug.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\interrupt.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\rom.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\rom_map.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\sysctl.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\uart.h)(0x601A13AD)
+I (C:\ti\TivaWare_C_Series-2.1.4.178\utils\uartstdio.h)(0x601A13BF)
