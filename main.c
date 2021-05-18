@@ -61,6 +61,7 @@ uint16_t    configuration;
 uint8_t     resolution;
 uint8_t     vdd_status;
 uint8_t     heater_status;
+uint32_t 		lightValue;
 
 uint16_t    ConvertToC(uint16_t);
 uint16_t    ConvertToF(uint16_t);
@@ -80,6 +81,8 @@ void        ResetTimer0A(void);
 
 void        HUT21Send(uint8_t);
 uint32_t    HTU21Receive(void);
+
+void 				ADC0_Handler(void);
 
 void        TIMER0A_ISR(void);
 
@@ -309,8 +312,34 @@ uint32_t HTU21Receive(void) {
     return return_val[1] << 8 | return_val[0];
 }
 
+void ADC0_Handler(void)
+{	
+		UARTprintf("enter adc");
+		ADCIntClear(ADC0_BASE, 3);
+		//ADCProcessorTrigger(ADC0_BASE, 3);
+		ADCSequenceDataGet(ADC0_BASE, 3, &lightValue);
+		UARTprintf("Current Value of photoresitor :%d", lightValue);
+		UARTprintf("\n");
+	
+		if(lightValue < 100 )
+		{
+			UARTprintf("Its Dark\n");
+		}
+		else if(lightValue < 1000 )
+		{
+			UARTprintf("Its dim\n");
+		}
+		else
+		{
+			UARTprintf("Its Bright\n");
+		}
+	
+}
+
+
 uint8_t i = 0;
 void TIMER0A_ISR(void) {
+		UARTprintf("enter timer\n");
     TimerIntClear(TIMER0_BASE, TIMER_A);                                // Clear the interrupt flag
 
     GPIOPinWrite(GPIO_PORTE_BASE, GPIO_PIN_1, GPIO_PIN_1);
@@ -322,7 +351,9 @@ void TIMER0A_ISR(void) {
     HTU21Send( CMD_READ_TMP );                                          // Tell the HTU21 that we want to read the last temperature measurement
     temperature = ConvertToF( HTU21Receive() );                         // Receive the last temperature reading and convert to Fahrenheit
     HTU21Send( CMD_MEAS_HUM_NH );                                       // Tell the HTU21 to measure the humidity (this command also measures temperature)
-
+		UARTprintf("ADC Start\n");
+		ADCProcessorTrigger(ADC0_BASE, 3);
+		UARTprintf("end adc\n");
     TimerEnable(TIMER0_BASE, TIMER_A);                                  // Restart the sleep timer
 }
 
@@ -349,6 +380,7 @@ int main(void) {
     ConfigureUSBUART0();                                                // Configure UART0 for USB stdio
     ConfigureBluetoothUART1();                                          // Configure UART1 for serial Bluetooth
     ConfigureI2C0();                                                    // Configure I2C0 for the HTU21 sensor and SSD1306 LED
+		ConfigureGPIOPortE();
 		ADC0_Init();
 
     ResetTimer0A();                                                     // Configure the timer
@@ -380,7 +412,7 @@ int main(void) {
         GPIOPinWrite(GPIO_PORTE_BASE, GPIO_PIN_1, ~GPIO_PIN_1);
         SysCtlSleep();
     }
-		
+    		
 		return 0;
 
 }

@@ -1,6 +1,6 @@
 Dependencies for Project 'WeatherMonitor', Target 'Target 1': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
-F (.\i2clib.c)(0x60A19424)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I C:\ti\TivaWare_C_Series-2.1.4.178 --c99-IC:\Users\Chris\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="533" -DTM4C123GH6PM -Drvmdk -DPART_TM4c123GH6PM -DPART_TM4C123GH6PM-o .\objects\i2clib.o --omf_browse .\objects\i2clib.crf --depend .\objects\i2clib.d)
+F (.\i2clib.c)(0x60A19424)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I C:\ti\TivaWare_C_Series-2.1.4.178 --c99-IC:\Users\Chris\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="533" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM-o .\objects\i2clib.o --omf_browse .\objects\i2clib.crf --depend .\objects\i2clib.d)
 I (i2clib.h)(0x60A19424)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8F0FB2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5E8F0FB2)
@@ -9,7 +9,7 @@ I (C:\ti\TivaWare_C_Series-2.1.4.178\inc\hw_i2c.h)(0x601A065D)
 I (C:\ti\TivaWare_C_Series-2.1.4.178\inc\hw_memmap.h)(0x601A065D)
 I (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\i2c.h)(0x601A0657)
 F (.\i2clib.h)(0x60A19424)()
-F (.\main.c)(0x60A315B4)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I C:\ti\TivaWare_C_Series-2.1.4.178 --c99-IC:\Users\Chris\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="533" -DTM4C123GH6PM -Drvmdk -DPART_TM4c123GH6PM -DPART_TM4C123GH6PM-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.c)(0x60A34BCF)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I C:\ti\TivaWare_C_Series-2.1.4.178 --c99-IC:\Users\Chris\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="533" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8F0FB2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5E8F0FB2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5E8F0FB2)
@@ -41,15 +41,15 @@ I (libs/ssd1306/bit_manipulation.h)(0x60A19424)
 I (libs/ssd1306/ssd1306_utils.h)(0x60A19424)
 I (libs/ssd1306/oled_font_source_pro.h)(0x60A19424)
 F (.\main.h)(0x60A19424)()
-F (.\startup_rvmdk.S)(0x60A31673)(--cpu Cortex-M4.fp.sp --pd "__EVAL SETA 1" -g --apcs=interwork -IC:\Users\Chris\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-IC:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 533" --pd "TM4C123GH6PM SETA 1"--list .\listings\startup_rvmdk.lst --xref -o .\objects\startup_rvmdk.o --depend .\objects\startup_rvmdk.d)
+F (.\startup_rvmdk.S)(0x60A34E2F)(--cpu Cortex-M4.fp.sp --pd "__EVAL SETA 1" -g --apcs=interwork -IC:\Users\Chris\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-IC:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 533" --pd "TM4C123GH6PM SETA 1"--list .\listings\startup_rvmdk.lst --xref -o .\objects\startup_rvmdk.o --depend .\objects\startup_rvmdk.d)
 F (.\libs\ssd1306\bit_manipulation.h)(0x60A19424)()
 F (.\libs\ssd1306\oled_font.h)(0x60A19424)()
-F (.\libs\ssd1306\oled_font_source_pro.c)(0x60A19424)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I C:\ti\TivaWare_C_Series-2.1.4.178 --c99-IC:\Users\Chris\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="533" -DTM4C123GH6PM -Drvmdk -DPART_TM4c123GH6PM -DPART_TM4C123GH6PM-o .\objects\oled_font_source_pro.o --omf_browse .\objects\oled_font_source_pro.crf --depend .\objects\oled_font_source_pro.d)
+F (.\libs\ssd1306\oled_font_source_pro.c)(0x60A19424)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I C:\ti\TivaWare_C_Series-2.1.4.178 --c99-IC:\Users\Chris\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="533" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM-o .\objects\oled_font_source_pro.o --omf_browse .\objects\oled_font_source_pro.crf --depend .\objects\oled_font_source_pro.d)
 I (libs\ssd1306\oled_font_source_pro.h)(0x60A19424)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8F0FB2)
 I (libs\ssd1306\oled_font.h)(0x60A19424)
 F (.\libs\ssd1306\oled_font_source_pro.h)(0x60A19424)()
-F (.\libs\ssd1306\ssd1306.c)(0x60A19424)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I C:\ti\TivaWare_C_Series-2.1.4.178 --c99-IC:\Users\Chris\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="533" -DTM4C123GH6PM -Drvmdk -DPART_TM4c123GH6PM -DPART_TM4C123GH6PM-o .\objects\ssd1306.o --omf_browse .\objects\ssd1306.crf --depend .\objects\ssd1306.d)
+F (.\libs\ssd1306\ssd1306.c)(0x60A19424)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I C:\ti\TivaWare_C_Series-2.1.4.178 --c99-IC:\Users\Chris\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="533" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM-o .\objects\ssd1306.o --omf_browse .\objects\ssd1306.crf --depend .\objects\ssd1306.d)
 I (libs\ssd1306\ssd1306.h)(0x60A19424)
 I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x5E8F0FB2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5E8F0FB2)
@@ -71,7 +71,7 @@ I (libs\ssd1306\bit_manipulation.h)(0x60A19424)
 I (libs\ssd1306\ssd1306_utils.h)(0x60A19424)
 F (.\libs\ssd1306\ssd1306.h)(0x60A19424)()
 F (.\libs\ssd1306\ssd1306_info.h)(0x60A19424)()
-F (.\libs\ssd1306\ssd1306_utils.c)(0x60A19424)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I C:\ti\TivaWare_C_Series-2.1.4.178 --c99-IC:\Users\Chris\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="533" -DTM4C123GH6PM -Drvmdk -DPART_TM4c123GH6PM -DPART_TM4C123GH6PM-o .\objects\ssd1306_utils.o --omf_browse .\objects\ssd1306_utils.crf --depend .\objects\ssd1306_utils.d)
+F (.\libs\ssd1306\ssd1306_utils.c)(0x60A19424)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I C:\ti\TivaWare_C_Series-2.1.4.178 --c99-IC:\Users\Chris\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="533" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM-o .\objects\ssd1306_utils.o --omf_browse .\objects\ssd1306_utils.crf --depend .\objects\ssd1306_utils.d)
 I (libs\ssd1306\ssd1306_utils.h)(0x60A19424)
 I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x5E8F0FB2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5E8F0FB2)
@@ -91,7 +91,7 @@ I (libs\ssd1306\ssd1306_info.h)(0x60A19424)
 I (libs\ssd1306\bit_manipulation.h)(0x60A19424)
 F (.\libs\ssd1306\ssd1306_utils.h)(0x60A19424)()
 F (C:\ti\TivaWare_C_Series-2.1.4.178\driverlib\rvmdk\driverlib.lib)(0x601A0658)()
-F (C:\ti\TivaWare_C_Series-2.1.4.178\utils\uartstdio.c)(0x601A0666)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I C:\ti\TivaWare_C_Series-2.1.4.178 --c99-IC:\Users\Chris\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="533" -DTM4C123GH6PM -Drvmdk -DPART_TM4c123GH6PM -DPART_TM4C123GH6PM-o .\objects\uartstdio.o --omf_browse .\objects\uartstdio.crf --depend .\objects\uartstdio.d)
+F (C:\ti\TivaWare_C_Series-2.1.4.178\utils\uartstdio.c)(0x601A0666)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I C:\ti\TivaWare_C_Series-2.1.4.178 --c99-IC:\Users\Chris\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="533" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM-o .\objects\uartstdio.o --omf_browse .\objects\uartstdio.crf --depend .\objects\uartstdio.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5E8F0FB2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8F0FB2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5E8F0FB2)
