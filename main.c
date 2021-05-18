@@ -18,6 +18,7 @@
 #include "driverlib/gpio.h"
 #include "driverlib/i2c.h"
 #include "driverlib/interrupt.h"
+#include "driverlib/adc.h"
 #include "inc/tm4c123gh6pm.h"
 
 #include "driverlib/uart.h"
@@ -69,6 +70,7 @@ void        ConfigureUSBUART0(void);
 void        ConfigureBluetoothUART1(void);
 void        ConfigureI2C0(void);
 void        ConfigureLCD(void);
+void 				ADC0_Init(void);
 
 void        BluetoothPrint(char* const str);
 void        print(char const*, ...);
@@ -177,6 +179,47 @@ void ConfigureI2C0(void) {
     HWREG(I2C0_BASE + I2C_O_FIFOCTL) = 80008000;
 
 }
+void ADC0_Init(void)
+{
+	
+		 // configure the system clock to be 40MHz
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC0);	//activate the clock of ADC0
+		SysCtlDelay(2);	//insert a few cycles after enabling the peripheral to allow the clock to be fully activated.
+
+		ADCSequenceDisable(ADC0_BASE, 3); //disable ADC0 before the configuration is complete
+		/*
+		ADCSequenceConfigure(ADC0_BASE, 1, ADC_TRIGGER_PROCESSOR, 0); // will use ADC0, SS1, processor-trigger, priority 0
+		ADCSequenceStepConfigure(ADC0_BASE, 1, 0, ADC_CTL_TS); //ADC0 SS1 Step 0, sample from internal temperature sensor
+		ADCSequenceStepConfigure(ADC0_BASE, 1, 1, ADC_CTL_TS); //ADC0 SS1 Step 1, sample from internal temperature sensor
+		ADCSequenceStepConfigure(ADC0_BASE, 1, 2, ADC_CTL_TS); //ADC0 SS1 Step 2, sample from internal temperature sensor
+		//ADC0 SS1 Step 0, sample from internal temperature sensor, completion of this step will set RIS, last sample of the sequence
+		ADCSequenceStepConfigure(ADC0_BASE,1,3,ADC_CTL_TS|ADC_CTL_IE|ADC_CTL_END); 
+		*/
+	
+		ADCSequenceConfigure(ADC0_BASE, 3, ADC_TRIGGER_PROCESSOR, 0);
+		ADCSequenceStepConfigure(ADC0_BASE, 3, 0, ADC_CTL_CH0|ADC_CTL_IE|ADC_CTL_END);
+	
+	/*
+		IntPrioritySet(INT_ADC0SS1, 0x00);  	 // configure ADC0 SS1 interrupt priority as 0
+		IntEnable(INT_ADC0SS1);    				// enable interrupt 31 in NVIC (ADC0 SS1)
+		ADCIntEnableEx(ADC0_BASE, ADC_INT_SS1);      // arm interrupt of ADC0 SS1
+	*/
+		
+		IntPrioritySet(INT_ADC0SS3, 0x00);  	 // configure ADC0 SS1 interrupt priority as 0
+		IntEnable(INT_ADC0SS3);    				// enable interrupt 31 in NVIC (ADC0 SS1)
+		ADCIntEnableEx(ADC0_BASE, ADC_INT_SS3);      // arm interrupt of ADC0 SS1
+	
+		ADCSequenceEnable(ADC0_BASE, 3); //enable ADC0
+}
+
+void ConfigureGPIOPortE(void) {
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);                    // Activate the clock of GPIO_PORTE
+    GPIOPinConfigure(GPIO_PCTL_PE3_AIN0);                        // Configure pin PE3 as analog input
+    GPIOPinTypeGPIOInput(GPIO_PORTE_BASE, GPIO_PIN_3);                // Configure pin PE3 as input (might be redundant)
+}
+
+
+
 
 void BluetoothPrint(char* const str) {
     char* c = str;
@@ -306,6 +349,7 @@ int main(void) {
     ConfigureUSBUART0();                                                // Configure UART0 for USB stdio
     ConfigureBluetoothUART1();                                          // Configure UART1 for serial Bluetooth
     ConfigureI2C0();                                                    // Configure I2C0 for the HTU21 sensor and SSD1306 LED
+		ADC0_Init();
 
     ResetTimer0A();                                                     // Configure the timer
     TimerInterruptInit();                                               // Enable the timer interrupt
@@ -327,7 +371,6 @@ int main(void) {
         // Print to all outputs (USB, Bluetooth, LED)
         //
         print("H: %2d T: %2d\n", humidity, temperature);
-
         //
         // For some reason, this print statement does not execute fully when it calls BluetoothPrint().
         // Adding a breakpoint on UARTprint() or SysCtlSleep() allows it to print completely.

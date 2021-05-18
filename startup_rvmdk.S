@@ -78,7 +78,7 @@ __heap_limit
 ; External declarations for the interrupt handlers used by the application.
 ;
 ;******************************************************************************
-
+		EXTERN  ADC0_Handler
 
 ;******************************************************************************
 ;
@@ -152,9 +152,9 @@ __Vectors
         DCD     IntDefaultHandler           ; uDMA Software Transfer
         DCD     IntDefaultHandler           ; uDMA Error
         DCD     IntDefaultHandler           ; ADC1 Sequence 0
-        DCD     IntDefaultHandler           ; ADC1 Sequence 1
+        DCD     ADC0_Handler	           ; ADC1 Sequence 1
         DCD     IntDefaultHandler           ; ADC1 Sequence 2
-        DCD     IntDefaultHandler           ; ADC1 Sequence 3
+        DCD     ADC0_Handler           ; ADC1 Sequence 3
         DCD     0                           ; Reserved
         DCD     0                           ; Reserved
         DCD     IntDefaultHandler           ; GPIO Port J
