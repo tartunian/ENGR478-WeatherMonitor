@@ -184,29 +184,16 @@ void ConfigureI2C0(void) {
 }
 void ADC0_Init(void)
 {
-	
-		 // configure the system clock to be 40MHz
+	 
 		SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC0);	//activate the clock of ADC0
 		SysCtlDelay(2);	//insert a few cycles after enabling the peripheral to allow the clock to be fully activated.
 
 		ADCSequenceDisable(ADC0_BASE, 3); //disable ADC0 before the configuration is complete
-		/*
-		ADCSequenceConfigure(ADC0_BASE, 1, ADC_TRIGGER_PROCESSOR, 0); // will use ADC0, SS1, processor-trigger, priority 0
-		ADCSequenceStepConfigure(ADC0_BASE, 1, 0, ADC_CTL_TS); //ADC0 SS1 Step 0, sample from internal temperature sensor
-		ADCSequenceStepConfigure(ADC0_BASE, 1, 1, ADC_CTL_TS); //ADC0 SS1 Step 1, sample from internal temperature sensor
-		ADCSequenceStepConfigure(ADC0_BASE, 1, 2, ADC_CTL_TS); //ADC0 SS1 Step 2, sample from internal temperature sensor
-		//ADC0 SS1 Step 0, sample from internal temperature sensor, completion of this step will set RIS, last sample of the sequence
-		ADCSequenceStepConfigure(ADC0_BASE,1,3,ADC_CTL_TS|ADC_CTL_IE|ADC_CTL_END); 
-		*/
+
 	
 		ADCSequenceConfigure(ADC0_BASE, 3, ADC_TRIGGER_PROCESSOR, 0);
 		ADCSequenceStepConfigure(ADC0_BASE, 3, 0, ADC_CTL_CH0|ADC_CTL_IE|ADC_CTL_END);
-	
-	/*
-		IntPrioritySet(INT_ADC0SS1, 0x00);  	 // configure ADC0 SS1 interrupt priority as 0
-		IntEnable(INT_ADC0SS1);    				// enable interrupt 31 in NVIC (ADC0 SS1)
-		ADCIntEnableEx(ADC0_BASE, ADC_INT_SS1);      // arm interrupt of ADC0 SS1
-	*/
+
 		
 		IntPrioritySet(INT_ADC0SS3, 0x00);  	 // configure ADC0 SS1 interrupt priority as 0
 		IntEnable(INT_ADC0SS3);    				// enable interrupt 31 in NVIC (ADC0 SS1)
@@ -314,9 +301,7 @@ uint32_t HTU21Receive(void) {
 
 void ADC0_Handler(void)
 {	
-		UARTprintf("enter adc");
 		ADCIntClear(ADC0_BASE, 3);
-		//ADCProcessorTrigger(ADC0_BASE, 3);
 		ADCSequenceDataGet(ADC0_BASE, 3, &lightValue);
 		UARTprintf("Current Value of photoresitor :%d", lightValue);
 		UARTprintf("\n");
@@ -339,7 +324,7 @@ void ADC0_Handler(void)
 
 uint8_t i = 0;
 void TIMER0A_ISR(void) {
-		UARTprintf("enter timer\n");
+		
     TimerIntClear(TIMER0_BASE, TIMER_A);                                // Clear the interrupt flag
 
     GPIOPinWrite(GPIO_PORTE_BASE, GPIO_PIN_1, GPIO_PIN_1);
@@ -351,9 +336,9 @@ void TIMER0A_ISR(void) {
     HTU21Send( CMD_READ_TMP );                                          // Tell the HTU21 that we want to read the last temperature measurement
     temperature = ConvertToF( HTU21Receive() );                         // Receive the last temperature reading and convert to Fahrenheit
     HTU21Send( CMD_MEAS_HUM_NH );                                       // Tell the HTU21 to measure the humidity (this command also measures temperature)
-		UARTprintf("ADC Start\n");
+		
 		ADCProcessorTrigger(ADC0_BASE, 3);
-		UARTprintf("end adc\n");
+		
     TimerEnable(TIMER0_BASE, TIMER_A);                                  // Restart the sleep timer
 }
 
@@ -381,7 +366,7 @@ int main(void) {
     ConfigureBluetoothUART1();                                          // Configure UART1 for serial Bluetooth
     ConfigureI2C0();                                                    // Configure I2C0 for the HTU21 sensor and SSD1306 LED
 		ConfigureGPIOPortE();
-		ADC0_Init();
+		ADC0_Init();																												
 
     ResetTimer0A();                                                     // Configure the timer
     TimerInterruptInit();                                               // Enable the timer interrupt
@@ -403,6 +388,24 @@ int main(void) {
         // Print to all outputs (USB, Bluetooth, LED)
         //
         print("H: %2d T: %2d\n", humidity, temperature);
+				
+				SysCtlDelay(SysCtlClockGet()); //Cant get the screen to scroll, so delay for info to be displayed and print a new line
+			
+				//values for the if statements were test against a flashlight at various distances. not the most accurate scale but should give a general idea
+			
+				
+				if(lightValue < 100 )
+				{
+					print("Its Dark\n");
+				}
+				else if(lightValue < 1000 )
+				{
+					print("Its dim\n");
+				}
+				else
+				{
+					print("Its Bright\n");
+				}
         //
         // For some reason, this print statement does not execute fully when it calls BluetoothPrint().
         // Adding a breakpoint on UARTprint() or SysCtlSleep() allows it to print completely.
