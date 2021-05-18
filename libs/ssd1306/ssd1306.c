@@ -149,6 +149,7 @@ void ssd1306PrintString(const char *      stringToPrint,
   while (1) {
 
       if(stringToPrint[stringIndex] == '\n') {
+          ssd1306EndCom(0);
           ssd1306PrintString(&stringToPrint[stringIndex+1], lineNum+1, 0, fontSet);
           return;
       }
