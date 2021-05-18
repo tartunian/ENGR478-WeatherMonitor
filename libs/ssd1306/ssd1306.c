@@ -147,13 +147,20 @@ void ssd1306PrintString(const char *      stringToPrint,
   uint32_t glyphIndex  = 0;
   uint32_t stringIndex = 0;
   while (1) {
+
+      if(stringToPrint[stringIndex] == '\n') {
+          ssd1306PrintString(&stringToPrint[stringIndex+1], lineNum+1, 0, fontSet);
+          return;
+      }
+
     glyphIndex = stringToPrint[stringIndex] - fontSet.charOffset;
 
     for (uint32_t bitIndex = 0; bitIndex < fontSet.descList[glyphIndex].glyphLen; ++bitIndex) {
       ssd1306ContinueCom(fontSet.descList[glyphIndex].glyphBitmap[bitIndex]);
     }
     ++stringIndex;
-    if (stringToPrint[stringIndex] == '\0' || stringToPrint[stringIndex] == '\n') {
+    //if (stringToPrint[stringIndex] == '\0' || stringToPrint[stringIndex] == '\n') {
+    if (stringToPrint[stringIndex] == '\0') {
       ssd1306EndCom(0);
       break;
     }

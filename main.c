@@ -198,6 +198,20 @@ void print(const char* format, ... ) {
 
     ssd1306ClearDisplay();                                              // Clear the ssd1306 LED
     ssd1306PrintString(buf, 0, 0, source_pro_set);                      // Print to ssd1360 LED (I2C0)
+
+//    int lineNum = 0;
+//    const char* c = &buf[0];
+//    while(*c  != '\0') {
+//        if(*c == '\n' || *c == '\r') {
+//            lineNum++;
+//        } else if(lineNum <=1) {
+//            char const _c[2] = { 'A', '\0' };
+//            ssd1306PrintString(&_c[0], lineNum, c-&buf, source_pro_set);     // Print character to ssd1360 LED (I2C0) on correct line number. c-&buf gives column number.
+//        } else {
+//            /* Invalid line number. */
+//        }
+//        c++;
+//    }
 }
 
 void TimerInterruptInit(void) {
@@ -318,7 +332,7 @@ int main(void) {
     ssd1306ClearDisplay();
     ssd1306AdjustContrast(25);
 
-    print("Enabling sleep wake timer.\n");
+//    print("Enabling sleep wake timer.\n");
     TimerEnable(TIMER0_BASE, TIMER_A);                                  // Start the wake timer
 
     while(1) {
@@ -326,13 +340,8 @@ int main(void) {
         //
         // Print to all outputs (USB, Bluetooth, LED)
         //
-        print("H: %2d T: %2d\n", humidity, temperature);
+        print("H: %2d T: %2d\nL: 99", humidity, temperature);
 
-        //
-        // For some reason, this print statement does not execute fully when it calls BluetoothPrint().
-        // Adding a breakpoint on UARTprint() or SysCtlSleep() allows it to print completely.
-        //
-        //print("Going to sleep for 5s...\n");
 
         GPIOPinWrite(GPIO_PORTE_BASE, GPIO_PIN_1, ~GPIO_PIN_1);
         SysCtlSleep();
