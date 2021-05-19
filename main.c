@@ -18,6 +18,7 @@
 #include "driverlib/gpio.h"
 #include "driverlib/i2c.h"
 #include "driverlib/interrupt.h"
+#include "driverlib/adc.h"
 #include "inc/tm4c123gh6pm.h"
 
 #include "driverlib/uart.h"
@@ -60,6 +61,8 @@ uint16_t    configuration;
 uint8_t     resolution;
 uint8_t     vdd_status;
 uint8_t     heater_status;
+uint32_t 		lightValue;
+
 
 uint16_t    ConvertToC(uint16_t);
 uint16_t    ConvertToF(uint16_t);
@@ -69,6 +72,8 @@ void        ConfigureUSBUART0(void);
 void        ConfigureBluetoothUART1(void);
 void        ConfigureI2C0(void);
 void        ConfigureLCD(void);
+void 				ADC0_Init(void);
+void 				ADC0_Handler(void);
 
 void        BluetoothPrint(char* const str);
 void        print(char const*, ...);
@@ -78,6 +83,7 @@ void        ResetTimer0A(void);
 
 void        HUT21Send(uint8_t);
 uint32_t    HTU21Receive(void);
+void ConfigureGPIOPortE(void);
 
 void        TIMER0A_ISR(void);
 
@@ -177,6 +183,35 @@ void ConfigureI2C0(void) {
     HWREG(I2C0_BASE + I2C_O_FIFOCTL) = 80008000;
 
 }
+
+void ADC0_Init(void)
+{
+	 
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_ADC0);	//activate the clock of ADC0
+		SysCtlDelay(2);	//insert a few cycles after enabling the peripheral to allow the clock to be fully activated.
+
+		ADCSequenceDisable(ADC0_BASE, 3); //disable ADC0 before the configuration is complete
+
+	
+		ADCSequenceConfigure(ADC0_BASE, 3, ADC_TRIGGER_PROCESSOR, 0);
+		ADCSequenceStepConfigure(ADC0_BASE, 3, 0, ADC_CTL_CH0|ADC_CTL_IE|ADC_CTL_END);
+
+		
+		IntPrioritySet(INT_ADC0SS3, 0x00);  	 // configure ADC0 SS1 interrupt priority as 0
+		IntEnable(INT_ADC0SS3);    				// enable interrupt 31 in NVIC (ADC0 SS1)
+		ADCIntEnableEx(ADC0_BASE, ADC_INT_SS3);      // arm interrupt of ADC0 SS1
+	
+		ADCSequenceEnable(ADC0_BASE, 3); //enable ADC0
+}
+
+void ConfigureGPIOPortE(void) {
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);                    // Activate the clock of GPIO_PORTE
+    GPIOPinConfigure(GPIO_PCTL_PE3_AIN0);                        // Configure pin PE3 as analog input
+    GPIOPinTypeGPIOInput(GPIO_PORTE_BASE, GPIO_PIN_3);                // Configure pin PE3 as input (might be redundant)
+}
+
+
+
 
 void BluetoothPrint(char* const str) {
     char* c = str;
@@ -280,6 +315,28 @@ uint32_t HTU21Receive(void) {
     return return_val[1] << 8 | return_val[0];
 }
 
+void ADC0_Handler(void)
+{	
+		ADCIntClear(ADC0_BASE, 3);
+		ADCSequenceDataGet(ADC0_BASE, 3, &lightValue);
+		UARTprintf("Current Value of photoresitor :%d", lightValue);
+		UARTprintf("\n");
+	
+		if(lightValue < 100 )
+		{
+			UARTprintf("Its Dark\n");
+		}
+		else if(lightValue < 1000 )
+		{
+			UARTprintf("Its dim\n");
+		}
+		else
+		{
+			UARTprintf("Its Bright\n");
+		}
+	
+}
+
 uint8_t i = 0;
 void TIMER0A_ISR(void) {
     TimerIntClear(TIMER0_BASE, TIMER_A);                                // Clear the interrupt flag
@@ -293,7 +350,7 @@ void TIMER0A_ISR(void) {
     HTU21Send( CMD_READ_TMP );                                          // Tell the HTU21 that we want to read the last temperature measurement
     temperature = ConvertToF( HTU21Receive() );                         // Receive the last temperature reading and convert to Fahrenheit
     HTU21Send( CMD_MEAS_HUM_NH );                                       // Tell the HTU21 to measure the humidity (this command also measures temperature)
-
+		ADCProcessorTrigger(ADC0_BASE, 3);
     TimerEnable(TIMER0_BASE, TIMER_A);                                  // Restart the sleep timer
 }
 
@@ -320,6 +377,8 @@ int main(void) {
     ConfigureUSBUART0();                                                // Configure UART0 for USB stdio
     ConfigureBluetoothUART1();                                          // Configure UART1 for serial Bluetooth
     ConfigureI2C0();                                                    // Configure I2C0 for the HTU21 sensor and SSD1306 LED
+		ConfigureGPIOPortE();
+		ADC0_Init();	
 
     ResetTimer0A();                                                     // Configure the timer
     TimerInterruptInit();                                               // Enable the timer interrupt
@@ -340,8 +399,19 @@ int main(void) {
         //
         // Print to all outputs (USB, Bluetooth, LED)
         //
-        print("H: %2d T: %2d\nL: 99", humidity, temperature);
-
+       
+				if(lightValue < 100 )
+				{
+					print("H: %2d T: %2d\nIt's Dark", humidity, temperature);
+				}
+				else if(lightValue < 1000 )
+				{
+					print("H: %2d T: %2d\nIt's dim", humidity, temperature);
+				}
+				else
+				{
+					print("H: %2d T: %2d\nIt's Bright", humidity, temperature);
+				}
 
         GPIOPinWrite(GPIO_PORTE_BASE, GPIO_PIN_1, ~GPIO_PIN_1);
         SysCtlSleep();
