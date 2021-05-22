@@ -3,6 +3,7 @@ PB3 -> SDA
 PB2 -> SCL
 PC4 -> Bluetooth TX
 PC5 -> Bluetooth RX
+PE3 -> ADC Pin from photoresistor 
 
 Connecting to serial Bluetooth: use 38400 speed
 Connecting to serial USB: use 115200 speed
